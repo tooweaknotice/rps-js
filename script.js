@@ -9,10 +9,11 @@ ELSE
 
 
 function getComputerChoice() {
-  return Math.floor(Math.random() * 2);  
+  return Math.floor(Math.random() * 3);  
 }
 
 function getPlayerChoice() {
+  let keepGoing = true;
   while (keepGoing === true){
     let playerInput = prompt('What is your choice?');
     switch (playerInput.toLowerCase()){
@@ -30,7 +31,7 @@ function getPlayerChoice() {
 }
 
 function decodeChoice(numChoice){
-  switch (num){
+  switch (numChoice){
     case 0:
       return 'Rock';
     case 1:
@@ -50,11 +51,8 @@ function getWinner(playerChoice, computerChoice){
   return winner;
 }
 
-function playRound(playerSelection, computerSelection) {
-  playerSelection = getPlayerChoice();
-  computerSelection = getComputerChoice();
-  let winner = getWinner(playerSelection,computerSelection);
-  switch (winner){
+function printWinner(numWinner){
+  switch (numWinner){
     case -1:
       console.log('You Lose! ' + decodeChoice(computerSelection) + ' beats ' + decodeChoice(playerSelection));
       break;
@@ -65,5 +63,12 @@ function playRound(playerSelection, computerSelection) {
       console.log('You Win! ' + decodeChoice(playerSelection) + ' beats ' + decodeChoice(computerSelection));
       break;
   }
+}
+
+function playRound(playerSelection, computerSelection) {
+  playerSelection = getPlayerChoice();
+  computerSelection = getComputerChoice();
+  let winner = getWinner(playerSelection,computerSelection);
+  printWinner(winner);
   return winner;
 }
