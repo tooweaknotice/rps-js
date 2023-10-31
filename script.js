@@ -72,3 +72,20 @@ function playRound() {
   printWinner(winner, playerSelection,computerSelection);
   return winner;
 }
+
+function game() {
+  let playerScore = 0;
+  let cpuScore = 0;
+  let roundCount = 5;
+  for (let i = 0; i<roundCount-1; i++){
+    switch (playRound()){
+      case -1:
+        cpuScore++;
+      case 1:
+        playerScore++;
+    }
+  }
+  if (playerScore < cpuScore) {console.log('You lost everything...');}
+  else if(playerScore === cpuScore) {console.log('You tied everything');}
+  else {console.log('WINNER!');}
+}
