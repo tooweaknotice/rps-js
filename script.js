@@ -51,7 +51,7 @@ function getWinner(playerChoice, computerChoice){
   return winner;
 }
 
-function printWinner(numWinner){
+function printWinner(numWinner, numPlayer, numComputer){
   switch (numWinner){
     case -1:
       console.log('You Lose! ' + decodeChoice(computerSelection) + ' beats ' + decodeChoice(playerSelection));
@@ -65,10 +65,10 @@ function printWinner(numWinner){
   }
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound() {
   playerSelection = getPlayerChoice();
   computerSelection = getComputerChoice();
   let winner = getWinner(playerSelection,computerSelection);
-  printWinner(winner);
+  printWinner(winner, playerSelection,computerSelection);
   return winner;
 }
