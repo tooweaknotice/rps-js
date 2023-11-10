@@ -6,16 +6,20 @@ IF player selection > CPU selection
 ELSE
   PRINT message declaring user is loser.
 */
-
+const buttons = document.querySelectorAll(`button`);
+buttons.forEach(btn => 
+  btn.addEventListener(`click`, (e) => {
+    playRound(e.target.textContent);
+  })
+)
 
 function getComputerChoice() {
   return Math.floor(Math.random() * 3);  
 }
 
-function getPlayerChoice() {
+function lookupPlayerChoice(playerInput) {
   let keepGoing = true;
   while (keepGoing === true){
-    let playerInput = prompt('What is your choice?');
     switch (playerInput.toLowerCase()){
       case 'rock':
         return 0;
@@ -65,14 +69,15 @@ function printWinner(numWinner, numPlayer, numComputer){
   }
 }
 
-function playRound() {
-  playerSelection = getPlayerChoice();
+function playRound(playerChoice) {
+  playerSelection = lookupPlayerChoice(playerChoice);
   computerSelection = getComputerChoice();
-  let winner = getWinner(playerSelection,computerSelection);
-  printWinner(winner, playerSelection,computerSelection);
+  let winner = getWinner(playerSelection, computerSelection);
+  printWinner(winner, playerSelection, computerSelection);
   return winner;
 }
 
+/*
 function game() {
   let playerScore = 0;
   let cpuScore = 0;
@@ -89,3 +94,4 @@ function game() {
   else if(playerScore === cpuScore) {console.log('You tied everything');}
   else {console.log('WINNER!');}
 }
+*/
