@@ -56,15 +56,19 @@ function getWinner(playerChoice, computerChoice){
 }
 
 function printWinner(numWinner, numPlayer, numComputer){
+  const results = document.querySelector(`.results`);
   switch (numWinner){
     case -1:
       console.log('You Lose! ' + decodeChoice(computerSelection) + ' beats ' + decodeChoice(playerSelection));
+      results.textContent = 'You Lose! ' + decodeChoice(computerSelection) + ' beats ' + decodeChoice(playerSelection);
       break;
     case 0:
       console.log('Draw!');
+      results.textContent = 'Draw!';
       break;
     case 1:
       console.log('You Win! ' + decodeChoice(playerSelection) + ' beats ' + decodeChoice(computerSelection));
+      results.textContent = 'You Win! ' + decodeChoice(playerSelection) + ' beats ' + decodeChoice(computerSelection);
       break;
   }
 }
